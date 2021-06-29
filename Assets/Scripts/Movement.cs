@@ -39,8 +39,27 @@ public class Movement : MonoBehaviour
             direction = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
         }
 
+        //JUMP
         if (Input.GetKeyDown(KeyCode.Space)) {
             directionY = jumpSpeed;
+        }
+
+        //SPRINT
+        if (Input.GetKeyDown(KeyCode.LeftControl)) {
+            speed += 6f;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftControl)) {
+            speed -= 6f;
+        }
+
+        //SHIFT
+        if (Input.GetKeyDown(KeyCode.LeftShift)) {
+            speed -= 3f;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift)) {
+            speed += 3f;
         }
 
         directionY -= gravity * Time.deltaTime;
